@@ -1082,42 +1082,48 @@ body {
 
 @media (max-width: 768px) {
   :root {
-    --sidebar-w: 0px;
+    --sidebar-w: 100%;
   }
 
   .sidebar {
-    transform: translateX(-100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    transform: none; /* show it */
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .nav-item {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .sidebar-user,
+  .sidebar-cart {
+    display: none; /* optional: hide to save space */
   }
 
   .main-content {
     margin-left: 0;
+    margin-top: 70px; /* push content below top navbar */
   }
 
   .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .search-bar {
-    width: 100%;
-  }
-
-  .section,
-  .container {
-    padding: 20px;
-  }
-
-  .hero-left {
-    padding: 28px;
-  }
-
-  .hero-left h2 {
-    font-size: 32px;
-  }
-
-  .product-grid {
-    grid-template-columns: 1fr;
+    margin-top: 0;
   }
 }
 
