@@ -67,4 +67,4 @@ def update_cart(request, product_id):
         cart.pop(product_id, None)
     request.session['cart'] = cart
     return redirect('cart')
-# Create your views here.
+
