@@ -1,25 +1,66 @@
 {% extends 'base.html' %}
-{% block title %}Home — MyStore{% endblock %}
+{% block title %}Home — Lenx Tech{% endblock %}
 {% block content %}
+
 <section class="hero">
-  <h1>Welcome to Lenx Devices Store</h1>
-  <p>Discover our latest products</p>
-  <a href="{% url 'product_listing' %}" class="btn">Shop Now</a>
+  <div class="hero-left">
+    <div class="hero-eyebrow">New Arrivals 2026</div>
+    <h2>Welcome to <span>Lenx</span><br>Devices Store</h2>
+    <p>Discover our latest phones, laptops and accessories. Premium tech, delivered fast.</p>
+    <a href="{% url 'product_listing' %}" class="btn">
+      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+      </svg>
+      Shop Now
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="stat-card">
+      <span class="stat-num">500+</span>
+      <span class="stat-label">Products</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">2YR</span>
+      <span class="stat-label">Warranty</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">FREE</span>
+      <span class="stat-label">Delivery in Harare</span>
+    </div>
+  </div>
 </section>
 
-<section class="featured">
-  <h2>Featured Products</h2>
+<section class="section">
+  <div class="section-header">
+    <div class="section-header-left">
+      <div class="section-dot"></div>
+      <h3>Featured Products</h3>
+    </div>
+    <a href="{% url 'product_listing' %}">View All</a>
+  </div>
   <div class="product-grid">
     {% for product in products %}
     <div class="product-card">
-      <img src="{{ product.image_url }}" alt="{{ product.name }}">
-      <h3>{{ product.name }}</h3>
-      <p class="price">${{ product.price }}</p>
-      <a href="{% url 'product_detail' product.slug %}" class="btn">View</a>
+      <div class="product-card-glow"></div>
+      <div class="product-img-wrap">
+        <img src="{{ product.image_url }}" alt="{{ product.name }}">
+        {% if product.stock <= 0 %}
+        <span class="product-tag">Out of Stock</span>
+        {% endif %}
+      </div>
+      <div class="product-body">
+        <div class="product-category">{{ product.category.name }}</div>
+        <div class="product-name">{{ product.name }}</div>
+        <div class="product-footer">
+          <span class="price">${{ product.price }}</span>
+          <a href="{% url 'product_detail' product.slug %}" class="add-btn">View</a>
+        </div>
+      </div>
     </div>
     {% empty %}
-    <p>No products available yet.</p>
+    <p style="color: var(--grey); font-size: 13px;">No products available yet.</p>
     {% endfor %}
   </div>
 </section>
+
 {% endblock %}
