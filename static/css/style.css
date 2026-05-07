@@ -294,17 +294,19 @@ body {
 
 .topbar {
   background: var(--black2);
-  border-bottom: 1px solid var(--border);
-  padding: 13px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  position: sticky;
-  top: 0;
   z-index: 40;
-  border-radius: 0 0 12px 12px;
   flex-shrink: 0;
+
+  padding: 10px 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-radius: 0 0 10px 10px;
+  position: sticky;
+  top: var(--mobile-nav-h);
+  margin-bottom: 8px;
 }
 
 
@@ -1187,18 +1189,24 @@ body {
     text-transform: uppercase;
   }
 
+  
   .main-content {
-    margin-left: 0;
-    margin-top: var(--mobile-nav-h);
+  padding-top: 8px;
+  margin-left: 0;
+  margin-top: calc(var(--mobile-nav-h) + 8px); 
+  } 
+  
+  .topbar {
+   border-radius: 10px;              
+   top: calc(var(--mobile-nav-h) + 8px); 
+   margin: 0 8px 8px;                
   }
 
   .topbar {
     padding: 10px 16px;
     flex-wrap: wrap;
     gap: 8px;
-    border-radius: 0;
     position: sticky;
-    top: var(--mobile-nav-h);
   }
 
   .search-bar { width: 100%; order: 1; }
